@@ -10,7 +10,7 @@
   <?php }?>
   <div class="row">
       <div class="span8">
-        <form action="<?php echo BASE_URL?>register/addUser<?php if(isset($task)) echo $task ?>" method="post" onsubmit="editor.post()" id="registration-form">
+        <form action="<?php echo BASE_URL?>register/addUser<?php if(isset($task)) echo $task ?>" method="post" id="registration-form">
           <fieldset>
 			<legend>Register Today!</legend>
 			<label for="first_name">First Name: <font color="#FF0000">*</font></label>
@@ -34,8 +34,9 @@
 			<br>
 
 			<input name="uID" value="" type="hidden">
+			<input name="active" value="0" type="hidden">
 			 
-			<button id="submit" type="submit" class="btn btn-primary">Sign Up</button>
+			<button id="registration-submit" class="btn btn-primary">Sign Up</button>
 			</fieldset>
         </form>
 		<a href="<?php echo BASE_URL; ?>">Back to home page</a>
