@@ -7,6 +7,7 @@
 <?php if($user->isAdmin()) { ?>
     <script src="<?php echo BASE_URL?>application/plugins/tinyeditor/tiny.editor.packed.js"></script>
     <script>
+	/*
 			var editor = new TINY.editor.edit('editor', {
 				id: 'tinyeditor',
 				width: 584,
@@ -29,7 +30,7 @@
 				resize: {cssclass: 'resize'}
 			});
 			
-
+	*/
 		</script>
 		
 <?php } ?>
