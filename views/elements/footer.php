@@ -125,6 +125,16 @@
 					$(el).parent().parent().parent().submit();				
 				});
 				
+				$('#home-weather').ready(function(){
+					$.ajax({
+						url:'<?php echo BASE_URL; ?>ajax/get_local_weather/',
+						method:'GET',
+						success:function(data) {
+							$('#home-weather').html(data);
+						},
+					});
+				});
+				
 			});
 			
 		</script>
