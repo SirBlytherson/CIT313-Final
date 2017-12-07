@@ -135,6 +135,63 @@
 					});
 				});
 				
+							
+				$('#conPwd').on('change', function() {
+					if(this.value() !== $('#pwd').value()) {
+						this.css('border','1px solid #F00');
+					} else {
+						this.css('border','1px solid #000');
+					}
+				});
+				$("#registration-form").validate({
+					rules: {
+						first: {
+							required: true
+						},
+						last: {
+							required: true
+						},
+						pwd: {
+							required: true,
+							minlength: 5,
+							maxlength: 18
+						},
+						conPwd: {
+							required: true,
+							minlength: 5,
+							maxlength: 18,
+							equalTo: "#pwd"
+						},
+						email: {
+							required: true,
+							email: true
+						}
+					},
+					messages: {
+						first: {
+							required: "This field is required"
+						},
+						last: {
+							required: "This field is required"
+						},
+						pwd: {
+							required: "This field is required",
+							equalTo: "This field must match Confirm Password",
+							min: "Password must be at least 5 characters long",
+							max: "Password must be at most 18 characters long"
+						},
+						conPwd: {
+							required: "This field is required",
+							equalTo: "This field must match Password",
+							min: "Password must be at least 5 characters long",
+							max: "Password must be at most 18 characters long"
+						},
+						email: {
+							required: "This field is required",
+							email: "Please enter a valid email address"
+						}
+					}
+				});
 			});
 			
 		</script>
