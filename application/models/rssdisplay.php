@@ -18,12 +18,14 @@ class RssDisplay extends Model {
 	$response = array("title" => $items->channel->title,"items"=>array());
 	
 	for($i = 0; $i < $num_feed_items; $i += 1) {
-		array_push($response['items'], (object)array(
-			"title" => $items->channel->item[$i]->title,
-			"pubDate" => $items->channel->item[$i]->pubDate,
-			"guid" => $items->channel->item[$i]->guid,
-			"description" => $items->channel->item[$i]->description
-		));
+		if($items->channel->item[$i]) {
+			array_push($response['items'], (object)array(
+				"title" => $items->channel->item[$i]->title,
+				"pubDate" => $items->channel->item[$i]->pubDate,
+				"guid" => $items->channel->item[$i]->guid,
+				"description" => $items->channel->item[$i]->description
+			));
+		}
 	}
 	
 	return $response;
