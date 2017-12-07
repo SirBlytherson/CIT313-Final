@@ -134,64 +134,99 @@
 						},
 					});
 				});
-				
-							
+				$('#first_name').on('change', function() {
+					if(this.value() == '') {
+						this.css('border','1px solid #F00');
+					} else {
+						this.css('border','0');
+					}
+				});					
+				$('#last_name').on('change', function() {
+					if(this.value() == '') {
+						this.css('border','1px solid #F00');
+					} else {
+						this.css('border','0');
+					}
+				});				
+				$('#email').on('change', function() {
+					if(this.value() == '') {
+						this.css('border','1px solid #F00');
+					} else {
+						this.css('border','0');
+					}
+				});				
+				$('#pwd').on('change', function() {
+					if(this.value() == '') {
+						this.css('border','1px solid #F00');
+					} else {
+						this.css('border','0');
+					}
+				});				
 				$('#conPwd').on('change', function() {
 					if(this.value() !== $('#pwd').value()) {
+						this.css('border','1px solid #F00');
+					} else if(this.value() == '') {
 						this.css('border','1px solid #F00');
 					} else {
 						this.css('border','1px solid #000');
 					}
 				});
-				$("#registration-form").validate({
-					rules: {
-						first: {
-							required: true
-						},
-						last: {
-							required: true
-						},
-						pwd: {
-							required: true,
-							minlength: 5,
-							maxlength: 18
-						},
-						conPwd: {
-							required: true,
-							minlength: 5,
-							maxlength: 18,
-							equalTo: "#pwd"
-						},
-						email: {
-							required: true,
-							email: true
+				$('#registration-submit').click(function(e){
+					e.preventDefault();
+					var form = $('#registration-form');
+					
+					var error = '';
+					
+					console.log($('#first_name'));
+					
+					if($('#first_name').attr('value') !== '' &&
+						$('#last_name').attr('value') !== '' &&
+						$('#email').attr('value') !== '' &&
+						$('#pwd').attr('value') !== '' &&
+						$('#conPwd').attr('value') !== '' &&
+						$('#pwd').attr('value') == $('#conPwd').attr('value')
+					) {
+						form.submit();
+					} else {
+						if($('#first_name').attr('value') == '') {
+							error = error.concat("First name is empty.\n");
+							$('#first_name').css('border','1px solid #F00');
+						} else {
+							$('#first_name').css('border','0');
 						}
-					},
-					messages: {
-						first: {
-							required: "This field is required"
-						},
-						last: {
-							required: "This field is required"
-						},
-						pwd: {
-							required: "This field is required",
-							equalTo: "This field must match Confirm Password",
-							min: "Password must be at least 5 characters long",
-							max: "Password must be at most 18 characters long"
-						},
-						conPwd: {
-							required: "This field is required",
-							equalTo: "This field must match Password",
-							min: "Password must be at least 5 characters long",
-							max: "Password must be at most 18 characters long"
-						},
-						email: {
-							required: "This field is required",
-							email: "Please enter a valid email address"
+						if($('#last_name').attr('value') == '') {
+							error = error.concat("Last name is empty.\n");
+							$('#last_name').css('border','1px solid #F00');
+						} else {
+							$('#last_name').css('border','0');
 						}
+						if($('#email').attr('value') == '') {
+							error = error.concat("Email is empty.\n");
+							$('#email').css('border','1px solid #F00');
+						} else {
+							$('#email').css('border','0');
+						}
+						if($('#pwd').attr('value') == '') {
+							error = error.concat("Password is empty.\n");
+							$('#pwd').css('border','1px solid #F00');
+						} else {
+							$('#pwd').css('border','0');
+						}
+						if($('#conPwd').attr('value') == '') {
+							error = error.concat("Confirm password is empty.\n");
+							$('#conPwd').css('border','1px solid #F00');
+						} else {
+							$('#conPwd').css('border','0');
+						}
+						if($('#conPwd').attr('value') !== $('#pwd').attr('value')) {
+							error = error.concat("Confirm password must match password.\n");
+							$('#pwd').css('border','1px solid #F00');
+							$('#conPwd').css('border','1px solid #F00');
+						}
+						alert(error);
+						console.log(error);
 					}
-				});
+				});/**/
 			});
 			
 		</script>
