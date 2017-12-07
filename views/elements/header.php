@@ -16,6 +16,9 @@
     </style>
     <link href="<?php echo BASE_URL?>views/css/bootstrap-responsive.css" rel="stylesheet">
 	
+	<!-- jQuery Validation -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
+	
 	<?php if($user->isAdmin()) { ?>
 		<link rel="stylesheet" href="<?php echo BASE_URL; ?>application/plugins/tinyeditor/tinyeditor.css">
 	<?php } ?>
