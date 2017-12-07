@@ -10,24 +10,27 @@
   <?php }?>
   <div class="row">
       <div class="span8">
-        <form action="<?php echo BASE_URL?>register/addUser<?php if(isset($task)) echo $task ?>" method="post" onsubmit="editor.post()">
+        <form action="<?php echo BASE_URL?>register/addUser<?php if(isset($task)) echo $task ?>" method="post" onsubmit="editor.post()" id="registration-form">
           <fieldset>
 			<legend>Register Today!</legend>
 			<label for="first_name">First Name: <font color="#FF0000">*</font></label>
-			<input id="first_name" name="first_name" value="" maxlength="20" required="first_name" type="text">
+			<input id="first_name" name="first" value="" maxlength="20" required="first_name" type="text">
 			<br>
 						
 			<label for="last_name">Last Name: <font color="#FF0000">*</font></label>
-			<input class="txt" id="last_name" name="last_name" value="" maxlength="20" required="last_name" type="text">
+			<input class="txt" id="last_name" name="last" value="" maxlength="20" required="last_name" type="text">
 			<br>
 			 
 			<label for="email">E-mail Address: <font color="#FF0000">*</font></label>
 			<input class="txt" id="email" name="email" value="" maxlength="100" required="email" type="text">
 			<br>
 
-			<label for="password">Password: <font color="#FF0000">*</font></label>
-			<input class="txt" id="password" name="password" value="" maxlength="100" required="password" type="password">
-
+			<label for="pwd">Password: <font color="#FF0000">*</font></label>
+			<input class="txt" id="pwd" name="pwd" value="" maxlength="100" required="password" type="password">
+			<br>
+			
+			<label for="conPwd">Confirm Password: <font color="#FF0000">*</font></label>
+			<input class="txt" id="conPwd" name="conPwd" value="" maxlength="100" required="password" type="password">
 			<br>
 
 			<input name="uID" value="" type="hidden">
