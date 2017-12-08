@@ -3,6 +3,7 @@
 class BlogController extends Controller{
 	
 	public $postObject;
+	public $categoryObject;
    
    	public function post($pID){
 	   
@@ -15,9 +16,18 @@ class BlogController extends Controller{
 	public function index(){
 		
 		$this->postObject = new Post();
+		
 		$posts = $this->postObject->getAllPosts();
+		
+		$this->categoryObject = new Category();
+		
+		$categories = $this->categoryObject->getCategories();
+		
 		$this->set('title', 'The Default Blog View');
+		
 		$this->set('posts',$posts);
+		
+		$this->set('categories',$categories);
 	
 	}
 	
@@ -43,6 +53,18 @@ class BlogController extends Controller{
 		
 		$this->set('message',$response);
 		$this->set('response',$_POST['postID']);
+	}
+	
+	public function category($categoryID) {
+		
+		$this->postObject = new Post();
+
+		$posts = $this->postObject->getCategory($categoryID);
+		
+		$this->set('title', $posts[0]['category']);
+		
+		$this->set('posts',$posts);
+		
 	}
 	
 	

@@ -1,10 +1,10 @@
 <?php include('views/elements/header.php');?>
 
 <?php if( isset($posts) && is_array($posts) ) {?>
-
 <div class="container">
 	<div class="page-header">
-		<h1><?php echo $title;?></h1>
+		<h1><?php echo 'Category: '.$title;?></h1>
+		<a href="<?php echo BASE_URL.'blog/'; ?>"><button class="btn btn-default">Back to All Categories</button></a>
 	</div>
 	
 	<?php foreach($posts as $p){?>

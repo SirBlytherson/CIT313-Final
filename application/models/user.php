@@ -54,7 +54,7 @@ class User extends Model{
 	
 	}
 		
-	public function getAllUsers($limit = 0){
+	public function getAllUsers($limit = 0, $sort = ''){
 		
 		$numposts = '';
 		if($limit > 0){
@@ -62,7 +62,13 @@ class User extends Model{
 			$numposts = ' LIMIT '.$limit;
 		}
 		
-		$sql =  'SELECT * FROM users'.$numposts.';';
+		$order = '';
+		
+		if($sort == 'alpha') {
+			$order = ' ORDER BY first_name, last_name';
+		}
+		
+		$sql =  'SELECT * FROM users'.$order.$numposts.';';
 		
 		// perform query
 		$results = $this->db->execute($sql);
@@ -118,5 +124,52 @@ class User extends Model{
 		$user = $result->fields;
 
 		return $user;
-	}	
+	}
+	
+	public function is_active($uID) {
+		
+		$sql = 'SELECT active FROM users WHERE uID = ?';
+
+		$result = $this->db->execute($sql, array($uID));
+
+		$active = $result->fields['active'];
+		
+		if($active == "1") {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public function setActive($uID) {
+		
+		$sql='UPDATE users SET active = 1 WHERE uID = ?;';
+		
+		$data = array('uID'=>$uID);
+		
+		$result = $this->db->execute($sql,$data);
+		
+		return $result;
+	}
+	
+	public function remove($uID) {
+		
+		$sql='DELETE FROM users WHERE uID = ?;';
+		
+		$data = array('uID'=>$uID);
+		
+		$result = $this->db->execute($sql,$data);
+		
+		return $result;
+	}
+	
+	public function update($data) {
+		$sql = 'UPDATE users
+			SET first_name = ?, last_name = ?, email = ?, password = ?, active = ? 
+			WHERE uID = ?';
+		
+		$result = $this->db->execute($sql,$data);
+		
+		return $result;
+	}
 }

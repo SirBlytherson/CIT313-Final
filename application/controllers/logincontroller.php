@@ -12,9 +12,16 @@ class LoginController extends Controller{
 
 		$message = "Login Failed - Username/Email or Password Incorrect";
 
+		$uID = $this->user->getUserFromEmail($_POST['email']);
+		
 		if($this->user->checkUser($data)) {
-			$message = "Login Successful";
-			$_SESSION['uID'] = $this->user->getUserFromEmail($_POST['email']);
+			if($this->user->is_active($uID)) {
+				$message = "Login Successful";
+				$_SESSION['uID'] = $uID;
+			} else {
+				$message = "Your user account has not yet been approved.";
+				$_SESSION['message'] = $message;
+			}
 		}
 
 		$this->set('message', $message);

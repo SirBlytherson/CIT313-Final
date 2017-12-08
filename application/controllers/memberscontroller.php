@@ -19,5 +19,14 @@ class MembersController extends Controller{
 	
 	}
 	
+	public function profile() {
+	   
+      $this->userObject = new User();
+	  
+      $user = $this->userObject->getUser($_SESSION['uID']);
+	  
+	  $this->set('u', $user);
+	}
+	
 	
 }
