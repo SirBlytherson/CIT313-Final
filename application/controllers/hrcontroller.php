@@ -16,9 +16,9 @@ class HrController extends Controller {
 		
 		$this->userObject = new User();
 		
-		$result = $this->userObject->setActive($uID);
+		$this->userObject->setActive($uID);
 				
-		$this->set('response',$result);
+		$this->set('response','User Approved');
 	}
 	
 	public function remove($uID) {

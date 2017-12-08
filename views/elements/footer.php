@@ -101,8 +101,6 @@
 						url:'<?php echo BASE_URL; ?>ajax/get_local_weather/',
 						method:'GET',
 						success:function(data) {
-							console.log(data);
-							console.log($('.weather-sidebar'));
 							$('.weather-sidebar').html(data);
 						},
 					});
@@ -296,7 +294,6 @@
 				});
 				$('.approve-btn').click(function(e) {
 					e.preventDefault();
-					
 					var btn = this;
 					var uID = $(this).attr('id').replace('-approve','');
 					

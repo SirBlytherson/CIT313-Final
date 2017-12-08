@@ -3,7 +3,7 @@
 	$url = str_split($_SERVER['REQUEST_URI']);
 	$p = $url[count($url)-1];
 	if(isset($_SESSION['uID'])) { ?>
-		<form action="<?php echo BASE_URL?>blog/add_comment/" method="post" onsubmit="editor.post()">
+		<form action="<?php echo BASE_URL?>blog/add_comment/" method="post">
 		  <label for="commentText">Leave a comment:</label>
           <textarea id="tinyeditor" name="commentText" style="width:556px;height: 200px" placeholder="Leave a Comment..." required></textarea>
           <input type="hidden" name="date" value="<?php echo date("Y-m-d H:i:s"); ?>"/>

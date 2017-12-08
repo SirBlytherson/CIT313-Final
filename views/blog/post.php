@@ -1,7 +1,6 @@
 <?php include('views/elements/header.php');?>
 
 <?php
-var_dump($post);
 if(is_array($post) ) {
 	extract($post);
 } ?>
