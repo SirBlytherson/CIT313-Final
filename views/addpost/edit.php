@@ -23,7 +23,7 @@
 				$list = new Category();
 				$i = 1;
 				$categories = $list->getCategories();
-				?><script>alert(<?php var_dump($categories); ?>);</script><?php
+				
 				foreach($categories as $category) {
 					$selected = '';
 					if($category["categoryID"] === $categoryID) { $selected = ' selected'; }
